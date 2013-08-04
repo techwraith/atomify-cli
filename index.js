@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var css = require('atomify-css')
   , js = require('atomify-js')
   , program = require('commander')
@@ -11,7 +13,6 @@ program
         , 'the name of the file to output to ' +
           '(eg. "bundle" will make "bundle.css" and "bundle.js")', "bundle")
   .parse(process.argv)
-
 
 var options = {
   js: {

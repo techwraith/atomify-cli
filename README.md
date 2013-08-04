@@ -3,10 +3,12 @@ atomify-cli
 
 A CLI for Atomify
 
-### Usage
+```
+npm install -g atomify-cli
+```
 
 ```
-  Usage: index.js [options]
+  $ atomify [options]
 
   Options:
 

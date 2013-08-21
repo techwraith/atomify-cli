@@ -1,6 +1,6 @@
 {
   "name": "atomify-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A CLI for Atomify",
   "main": "index.js",
   "bin": {
@@ -30,6 +30,8 @@
     "brfs": "0.0.6",
     "hbsfy": "~0.1.5",
     "atomify-js": "0.0.2",
-    "commander": "~2.0.0"
+    "commander": "~2.0.0",
+    "handlebars": "~1.0.12",
+    "lingo": "0.0.5"
   }
 }

@@ -25,7 +25,7 @@
   "readmeFilename": "README.md",
   "gitHead": "aadc0d0dc51289d673a00849ea7891a8eb27ddc8",
   "dependencies": {
-    "atomify-css": "0.0.2",
+    "atomify-css": "0.0.3",
     "handlebars-runtime": "~1.0.12",
     "brfs": "0.0.6",
     "hbsfy": "~0.1.5",

@@ -9,7 +9,7 @@ var css = require('atomify-css')
   , path = require('path')
 
 program
-  .option('-c, -css [entry]', 'the entry file for the css, defaults to `./entry.css`', './entry.css')
+  .option('-c, --css [entry]', 'the entry file for the css, defaults to `./entry.css`', './entry.css')
   .option('-j, --js [entry]', 'the entry file for the js, defaults to `./entry.js`', './entry.js')
   .option('-o, --output [output]'
         , 'the name of the file to output to ' +
@@ -116,9 +116,11 @@ else {
     fs.writeFileSync(options.output+'.js', src);
   });
 
-  css(options.css, function (err, src) {
-    if (err) return console.log('error:', err.stack)
-    fs.writeFileSync(options.output+'.css', src);
-  });
+  if (fs.existsSync(options.css)) {
+    css(options.css, function (err, src) {
+      if (err) return console.log('error:', err.stack)
+      fs.writeFileSync(options.output+'.css', src);
+    });
+  }
 
 }

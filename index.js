@@ -5,8 +5,10 @@ var css = require('atomify-css')
   , hb = require('handlebars')
   , program = require('commander')
   , fs = require('fs')
+  , http = require('http')
   , lingo = require('lingo')
   , path = require('path')
+  , atomify = require('atomify')
 
 program
   .option('-c, --css [entry]', 'the entry file for the css, defaults to `./entry.css`', './entry.css')
@@ -16,6 +18,7 @@ program
           '(eg. "bundle" will make "bundle.css" and "bundle.js")', "bundle")
   .option('atoms', 'will create an atoms directory and fill it with an atom for each common html tag.')
   .option('uncommon', 'will create atoms in the atoms directory for the uncommon html tags (run separately).')
+  .option('test', 'will start a server to test your atom while you develop it.')
   .parse(process.argv)
 
 var options = {
@@ -106,6 +109,40 @@ if (program.atoms) {
   }
 
   console.log('done')
+
+}
+else if (program.test) {
+
+  var pkg = require(path.join(process.cwd(), 'package.json'))
+
+  var opts = {}
+
+  if (pkg.main) {
+    opts.js = {entry: path.join(process.cwd(), pkg.main)}
+  }
+
+  if (pkg.style) {
+    opts.css = {entry: path.join(process.cwd(), pkg.style)}
+  }
+
+  var atom = atomify(opts);
+
+  var html = '<html><head><script src="/index.js"></script><link href="/style.css" rel="stylesheet"/></head><body><body></html>'
+
+  http.createServer(function (req, res) {
+
+    console.log('requesting', req.url)
+
+    if (req.url == '/style.css' && pkg.style) atom.css(req, res)
+    else if (req.url == '/index.js' && pkg.main) atom.js(req, res)
+    else if (req.url == '/') res.end(html)
+    else {
+      res.writeHead(404, {'Content-Type': 'text/plain'});
+      res.end('Not Found\n');
+    }
+
+  }).listen(9001);
+  console.log('Server running at http://localhost:9001/');
 
 }
 // This is a normal bundle command

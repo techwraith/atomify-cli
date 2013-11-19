@@ -1,6 +1,6 @@
 {
   "name": "atomify-cli",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A CLI for Atomify",
   "main": "index.js",
   "bin": {

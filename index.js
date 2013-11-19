@@ -122,7 +122,7 @@ else if (program.test) {
   }
 
   if (pkg.style) {
-    opts.css = {entry: path.join(process.cwd(), pkg.style)}
+    opts.css = {entry: pkg.style}
   }
 
   var atom = atomify(opts);

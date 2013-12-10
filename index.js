@@ -11,8 +11,8 @@ var css = require('atomify-css')
   , atomify = require('atomify')
 
 program
-  .option('-c, --css [entry]', 'the entry file for the css, defaults to `./entry.css`', './entry.css')
-  .option('-j, --js [entry]', 'the entry file for the js, defaults to `./entry.js`', './entry.js')
+  .option('-c, --css [entry]', 'the entry file for the css, defaults to `./entry.css`', 'entry.css')
+  .option('-j, --js [entry]', 'the entry file for the js, defaults to `./entry.js`', 'entry.js')
   .option('-o, --output [output]'
         , 'the name of the file to output to ' +
           '(eg. "bundle" will make "bundle.css" and "bundle.js")', "bundle")
@@ -23,10 +23,10 @@ program
 
 var options = {
   js: {
-    entry: program.js
+    entry: path.join(process.cwd(), program.js)
   }
 , css: {
-    entry: program.Css
+    entry: path.join(process.cwd(), program.css)
   }
 , output: program.output
 }
@@ -122,7 +122,7 @@ else if (program.test) {
   }
 
   if (pkg.style) {
-    opts.css = {entry: pkg.style}
+    opts.css = {entry: path.join(process.cwd(), pkg.style)}
   }
 
   var atom = atomify(opts);

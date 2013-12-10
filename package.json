@@ -1,6 +1,6 @@
 {
   "name": "atomify-cli",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A CLI for Atomify",
   "main": "index.js",
   "bin": {
@@ -25,14 +25,14 @@
   "readmeFilename": "README.md",
   "gitHead": "aadc0d0dc51289d673a00849ea7891a8eb27ddc8",
   "dependencies": {
-    "atomify-css": "~0.0.3",
+    "atomify-css": "~0.0.x",
     "handlebars-runtime": "~1.0.12",
     "brfs": "0.0.6",
     "hbsfy": "~0.1.5",
-    "atomify-js": "~0.0.6",
+    "atomify-js": "~0.0.x",
     "commander": "~2.0.0",
     "handlebars": "~1.0.12",
     "lingo": "0.0.5",
-    "atomify": "0.0.9"
+    "atomify": "0.0.10"
   }
 }

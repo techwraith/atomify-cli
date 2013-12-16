@@ -1,7 +1,7 @@
 atomify-cli
 ===========
 
-A CLI for Atomify
+A CLI for [Atomify](https://github.com/techwraith/atomify)
 
 ```
 npm install -g atomify-cli

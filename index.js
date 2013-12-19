@@ -17,8 +17,8 @@ if(fs.existsSync(pkgPath)) {
 }
 
 program
-  .option('-c, --css [entry]', 'the entry file for the css, defaults to `./entry.css`', pkg.style || 'entry.css')
-  .option('-j, --js [entry]', 'the entry file for the js, defaults to `./entry.js`', pkg.main || 'entry.js')
+  .option('-c, --css [entry]', 'the entry file for the css, defaults to `package.json` style key, otherwise `./entry.css`', pkg.style || 'entry.css')
+  .option('-j, --js [entry]', 'the entry file for the js, defaults to `package.json` main key, otherwise `./entry.js`', pkg.main || 'entry.js')
   .option('-o, --output [output]'
         , 'the name of the file to output to ' +
           '(eg. "bundle" will make "bundle.css" and "bundle.js")', "bundle")

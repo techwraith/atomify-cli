@@ -9,10 +9,16 @@ var css = require('atomify-css')
   , lingo = require('lingo')
   , path = require('path')
   , atomify = require('atomify')
+  , pkgPath = path.join(process.cwd(), 'package.json')
+  , pkg = {}
+
+if(fs.existsSync(pkgPath)) {
+  pkg = require(pkgPath)
+}
 
 program
-  .option('-c, --css [entry]', 'the entry file for the css, defaults to `./entry.css`', 'entry.css')
-  .option('-j, --js [entry]', 'the entry file for the js, defaults to `./entry.js`', 'entry.js')
+  .option('-c, --css [entry]', 'the entry file for the css, defaults to `./entry.css`', pkg.style || 'entry.css')
+  .option('-j, --js [entry]', 'the entry file for the js, defaults to `./entry.js`', pkg.main || 'entry.js')
   .option('-o, --output [output]'
         , 'the name of the file to output to ' +
           '(eg. "bundle" will make "bundle.css" and "bundle.js")', "bundle")
@@ -112,8 +118,6 @@ if (program.atoms) {
 
 }
 else if (program.test) {
-
-  var pkg = require(path.join(process.cwd(), 'package.json'))
 
   var opts = {}
 

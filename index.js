@@ -157,7 +157,7 @@ else {
     fs.writeFileSync(options.output+'.js', src);
   });
 
-  if (fs.existsSync(options.css)) {
+  if (fs.existsSync(options.css.entry)) {
     css(options.css, function (err, src) {
       if (err) return console.log('error:', err.stack)
       fs.writeFileSync(options.output+'.css', src);

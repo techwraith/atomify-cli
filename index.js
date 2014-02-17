@@ -165,3 +165,7 @@ else {
   }
 
 }
+
+console.log('*****   This package has been deprecated    *****');
+console.log('*****    The CLI is now part of atomify     *****');
+console.log('***** https://github.com/techwraith/atomify *****');
